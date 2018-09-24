@@ -35,16 +35,20 @@ describe 'mongo::default' do
       expect(chef_run).to upgrade_package 'mongodb-org'
     end
 
-    it "should create a proxy.conf template in /etc/nginx/sites-available" do
-     expect(chef_run).to create_template("/etc/nginx/sites-available/proxy.conf")
-    end
-
     it "should create a template /etc/mongo.conf" do
       expect(chef_run).to create_template("/etc/mongo.conf")
     end
 
     it "should create a template /lib/systemd/system/mongod.service" do
       expect(chef_run).to create_template("/lib/systemd/system/mongod.service")
+    end
+
+    it "should start the MongoDB service" do
+      expect(chef_run).to start_service("mongod")
+    end
+
+    it "should enable the MongoDB service" do
+      expect(chef_run).to enable_service("mongod")
     end
   end
 end

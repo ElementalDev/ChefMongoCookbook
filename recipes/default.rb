@@ -25,6 +25,24 @@ package "mongodb-org" do
   action :upgrade
 end
 
+file "/etc/mongo.conf" do
+  action :delete
+end
+
+file "/lib/systemd/system/mongod.service" do
+  action :delete
+end
+
+template "/etc/mongo.conf" do
+  source "mongod.conf.erb"
+  notifies(:restart, "service[mongod]")
+end
+
+template "/lib/systemd/system/mongod.service" do
+  source "mongod.service.erb"
+  notifies(:restart, "service[mongod]")
+end
+
 service "mongod" do
   action [:enable, :start]
 end
