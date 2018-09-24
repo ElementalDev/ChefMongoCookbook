@@ -14,3 +14,8 @@ describe package 'mongodb-org' do
   it { should be_installed }
   its('version') { should match /3\./ }
 end
+
+describe port(27017) do
+  it { should be_listening }
+  its("addresses") { should include '0.0.0.0' }
+end
