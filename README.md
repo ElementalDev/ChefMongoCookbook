@@ -24,4 +24,4 @@ It is also tested using InSpec which runs integration test. This is also done us
 - [x] Should conduct integration tests to ensure that software has installed correctly.
   Including tests for:
   - [x] Is MongoDB installed?
-  - [x] Is the version of MongoDB >= v3.* 
+  - [x] Is the version of MongoDB >= v3.*
