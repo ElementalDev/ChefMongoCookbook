@@ -35,8 +35,8 @@ describe 'mongo::default' do
       expect(chef_run).to upgrade_package 'mongodb-org'
     end
 
-    it "should create a template /etc/mongo.conf" do
-      expect(chef_run).to create_template("/etc/mongo.conf")
+    it "should create a template /etc/mongod.conf" do
+      expect(chef_run).to create_template("/etc/mongod.conf")
     end
 
     it "should create a template /lib/systemd/system/mongod.service" do
